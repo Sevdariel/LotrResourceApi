@@ -1,0 +1,10 @@
+<ul>
+    @for(book of books$(); track book) {
+    @for(doc of book.docs;track doc) {
+    <li>
+        {{ doc.name }}
+    </li>
+
+    }
+    }
+</ul>
