@@ -1,10 +1,16 @@
 <ul>
     @for(book of books$(); track book) {
-    @for(doc of book.docs;track doc) {
     <li>
-        {{ doc.name }}
+        {{ book.name }}
     </li>
 
     }
-    }
 </ul>
+<!-- <ul>
+    @for(book of booksResource$.value().docs; track book) {
+    <li>
+        {{ book.name }}
+    </li>
+
+    }
+</ul> -->
