@@ -6,11 +6,11 @@
 
     }
 </ul>
-<!-- <ul>
+<ul>
     @for(book of booksResource$.value().docs; track book) {
-    <li>
+    <li (click)="openDetails(book._id)">
         {{ book.name }}
     </li>
 
     }
-</ul> -->
+</ul>

@@ -1,7 +1,6 @@
-import { httpResource } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, resource } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Books } from '../models/books.model';
 
 @Injectable({ providedIn: 'root' })
 export class BooksService {
@@ -9,13 +8,12 @@ export class BooksService {
 
   // public booksHttpResource = httpResource(() => 'https://the-one-api.dev/v2/book');
 
-  // public booksResource = resource({
-  //   loader: async () => {
-  //     const response = await fetch('https://the-one-api.dev/v2/book')
-  //     const data = await response.json()
-  //     return data.docs;
-  //   }
-  // });
+  public booksResource = resource<Books, never>({
+    loader: async () => {
+      const response = await fetch('https://the-one-api.dev/v2/book')
+      return await response.json()
+    }
+  });
 
   // public getResourceBoos() {
   //   return this.booksResource.value();

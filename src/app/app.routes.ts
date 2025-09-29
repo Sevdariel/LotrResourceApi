@@ -5,8 +5,8 @@ export const routes: Routes = [
     {
         path: '',
         loadComponent: () => import('./components/books-list/books-list').then(m => m.BooksList),
-        resolve: {
-            books: booksResolver
-        }
+        // resolve: {
+        //     books: booksResolver
+        // }
     }
 ];

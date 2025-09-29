@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, ResourceRef, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BooksService } from '../../services/books.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { BooksService } from '../../services/books.service';
 export class BooksList implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
   private readonly booksService = inject(BooksService);
+  private readonly router = inject(Router);
 
   protected books$ = signal<any>([]);
   protected booksResource$: ResourceRef<any> = null!;
@@ -22,7 +23,11 @@ export class BooksList implements OnInit {
     }
     console.log('Books list component this.books$()', this.books$())
 
-    // this.booksResource$ = this.booksService.booksResource;
-    // console.log('Books list component books', this.booksResource$.value())
+    this.booksResource$ = this.booksService.booksResource;
+    console.log('Books list component books', this.booksResource$.value())
+  }
+
+  public openDetails(id: string) {
+    this.router.navigate(['/books', id]);
   }
 }
